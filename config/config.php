@@ -1,4 +1,3 @@
 <?php
-define('ROOT_URL', 'http://localhost/php-course/blog/
-');
+define('ROOT_URL', 'https://ygor-blog-php.herokuapp.com/');
 ?>
