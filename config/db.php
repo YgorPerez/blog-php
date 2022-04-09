@@ -1,9 +1,12 @@
 <?php
 // create connection
-$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-
-// check connection
-if (mysqli_connect_errno()) {
-    // connection failed
-    echo 'Failed to connect to MySQL: ' . mysqli_connect_errno();
-}
+//Get Heroku ClearDB connection information
+$cleardb_url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+$cleardb_server = $cleardb_url["host"];
+$cleardb_username = $cleardb_url["user"];
+$cleardb_password = $cleardb_url["pass"];
+$cleardb_db = substr($cleardb_url["path"], 1);
+$active_group = 'default';
+$query_builder = true;
+// Connect to DB
+$conn = mysqli_connect($cleardb_server, $cleardb_username, $cleardb_password, $cleardb_db);
